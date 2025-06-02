@@ -1,0 +1,5 @@
+# Node modules (lourds et inutiles pour GitHub Pages)
+node_modules/
+
+# Dossiers de test (facultatif, si tu ne veux pas les publier)
+js/test/
