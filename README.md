@@ -82,6 +82,7 @@ Le site est déployé via **GitHub Pages** :
 3.  **Branche :** `main`
    - **Dossier :** `/ (root)`
 4. Accéder à l’URL générée
+https://alex061047.github.io/generateur-exercice/
 
 ---
 
