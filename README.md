@@ -106,3 +106,6 @@ Projet réalisé dans le cadre d’un exercice pédagogique.
 ---
 
 
+## Licence
+
+Ce projet est libre et open-source. Vous pouvez l'utiliser, le modifier et le partager librement.
