@@ -96,6 +96,39 @@ js/test/
 
 ---
 
+## Version Docker
+
+Dans un objectif pédagogique et professionnel, ce projet dispose également d'une version **Dockerisée**, permettant de simuler un déploiement local dans un conteneur.
+
+### Objectifs :
+- Fournir un environnement stable, portable et reproductible.
+- S’initier à la containerisation d’une application statique avec **Nginx**.
+- Pouvoir présenter le projet sans avoir besoin d’un serveur web installé localement.
+
+### Étapes :
+
+1. Crée un fichier `Dockerfile` à la racine du projet :
+
+```Dockerfile
+FROM nginx:alpine
+
+COPY exercice/ /usr/share/nginx/html
+
+EXPOSE 80
+```
+
+2. Construire l’image Docker :
+docker build -t exercice .
+
+3. Lancer le conteneur sur le port 8080 :
+docker run -d -p 8080:80 exercice
+
+Le site est ensuite accessible à l’adresse : http://localhost:8080
+
+Cette version Docker complète le déploiement sur GitHub Pages et illustre la capacité à livrer une application dans un environnement isolé, comme cela se pratique en entreprise.
+
+---
+
 ## Auteur
 
 **Alex.N**  
