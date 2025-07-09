@@ -9,6 +9,8 @@ Ce projet est une application web permettant de générer un exercice sportif al
 - Interface simple et responsive (Bootstrap 5).
 - Optimisation SEO (balises meta, Open Graph, favicon).
 - Tests automatisés avec Jest.
+- Conteneurisation possible via Docker.
+- Déploiement gratuit avec GitHub Pages.
 
 ---
 
@@ -19,24 +21,27 @@ Ce projet est une application web permettant de générer un exercice sportif al
 - **Bootstrap 5**
 - **Node.js** (pour les tests)
 - **Jest** (framework de tests unitaires)
+- **Docker** (optionnel)
 
 ---
 
 ## Structure du projet
 
 /exercice
-├── index.html # Page principale
-├── style.css # Feuille de style
-├── Img.png # Image d'en-tête et favicon
-├── js/
-│ ├── script.js # Script principal
-│ └── test/
-│ └── script.test.js # Tests unitaires avec Jest
-├── package.json # Dépendances & configuration de test
-├── package-lock.json
-├── node_modules/ # Modules Node installés
-├── .gitignore
-└── README.md # Ce fichier
+|-- index.html # Page principale
+|-- style.css # Feuille de style
+|-- Img.png # Image d'en-tête et favicon
+|-- js/
+│ |-- script.js # Script principal
+│ |-- test/
+│ |-- script.test.js # Tests unitaires avec Jest
+|-- .dockerignore # Exclusion des fichiers inutiles lors du build Docker
+|-- Dockerfile  # Configuration de l’image avec Nginx
+|-- package.json # Dépendances & configuration de test
+|-- package-lock.json
+|-- node_modules/ # Modules Node installés
+|-- .gitignore
+|-- README.md # Ce fichier
 
 
 ---
@@ -93,6 +98,40 @@ Fichiers ignorés dans le repository :
 node_modules/
 js/test/
 
+
+
+---
+
+## Version Docker
+
+Dans un objectif pédagogique et professionnel, ce projet dispose également d'une version **Dockerisée**, permettant de simuler un déploiement local dans un conteneur.
+
+### Objectifs :
+- Fournir un environnement stable, portable et reproductible.
+- S’initier à la containerisation d’une application statique avec **Nginx**.
+- Pouvoir présenter le projet sans avoir besoin d’un serveur web installé localement.
+
+### Étapes :
+
+1. Crée un fichier `Dockerfile` à la racine du projet :
+
+```Dockerfile
+FROM nginx:alpine
+
+COPY exercice/ /usr/share/nginx/html
+
+EXPOSE 80
+```
+
+2. Construire l’image Docker :
+docker build -t exercice .
+
+3. Lancer le conteneur sur le port 8080 :
+docker run -d -p 8080:80 exercice
+
+Le site est ensuite accessible à l’adresse : http://localhost:8080
+
+Cette version Docker complète le déploiement sur GitHub Pages et illustre la capacité à livrer une application dans un environnement isolé, comme cela se pratique en entreprise.
 
 ---
 
